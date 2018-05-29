@@ -1,0 +1,13 @@
+X (Sentence)
+	Mean Word Embedding for all words in the sentence
+	Mean Word Embedding for topic sentence
+	Sentence Number in the text
+	Sentence Length
+Y (Label)
+	Claim (1) Not Claim (0) - find is claim text is in sentence
+
+Logistic
+Random Forest
+Keras Feed Forward NN (LSTM)
+	Accuracy %
+	
