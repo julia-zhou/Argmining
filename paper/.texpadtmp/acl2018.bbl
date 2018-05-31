@@ -1,0 +1,11 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Toledo-Ronen et~al.(2016)Toledo-Ronen, Bar-Haim, and
+  Slonim}]{toledo2016expert}
+Orith Toledo-Ronen, Roy Bar-Haim, and Noam Slonim. 2016.
+\newblock Expert stance graphs for computational argumentation.
+\newblock In \emph{Proceedings of the Third Workshop on Argument Mining
+  (ArgMining2016)}, pages 119--123.
+
+\end{thebibliography}

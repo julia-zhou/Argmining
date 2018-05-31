@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: acl2018.aux
+The style file: ../acl_natbib.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: ../acl2018.bib
+Warning--I didn't find a database entry for "Gusfield:97"
+Warning--I didn't find a database entry for "Aho:72"
+Warning--I didn't find a database entry for "Chandra:81"
+Warning--I didn't find a database entry for "P16-1001"
+Warning--I didn't find a database entry for "C14-1001"
+Warning--I didn't find a database entry for "APA:83"
+Warning--I didn't find a database entry for "ACM:83"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 1 entry,
+            3573 wiz_defined-function locations,
+            713 strings with 5795 characters,
+and the built_in function-call counts, 880 in all, are:
+= -- 78
+> -- 32
+< -- 1
++ -- 10
+- -- 9
+* -- 53
+:= -- 143
+add.period$ -- 4
+call.type$ -- 1
+change.case$ -- 10
+chr.to.int$ -- 1
+cite$ -- 1
+duplicate$ -- 59
+empty$ -- 64
+format.name$ -- 12
+if$ -- 191
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 11
+newline$ -- 9
+num.names$ -- 4
+pop$ -- 28
+preamble$ -- 1
+purify$ -- 7
+quote$ -- 0
+skip$ -- 43
+stack$ -- 0
+substring$ -- 43
+swap$ -- 31
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 9
+warning$ -- 0
+while$ -- 6
+width$ -- 0
+write$ -- 16
+(There were 7 warnings)
