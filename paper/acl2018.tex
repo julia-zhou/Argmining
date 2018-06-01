@@ -15,6 +15,9 @@
 \usepackage[hyperref]{acl2018}
 \usepackage{times}
 \usepackage{latexsym}
+\usepackage{float}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 
 \usepackage{url}
 
@@ -49,6 +52,7 @@ using SVM
 classification task
 By combining these tasks we will be able to tell what sentences in a long text support and oppose a claim.
 \section{Related Work}
+\cite{bar2017stance}
 LIT REVIEW ANYTHING? (good examples in Roy Bar-Haim paper \\
 \section{Data}
 The dataset we are using is the Claim Stance Dataset from IBM Debater project which can be accessed here \url{http://www.research.ibm.com/haifa/dept/vst/debating_data.shtml}​.  It contains 2,394 labeled claims for 55 topics that are pulled from 1,065 wikipedia articles.  For each article we are given the following data points:
@@ -70,14 +74,85 @@ Wikipedia:List_of_controversial_issues} Wikipedia identifies to find a subset of
 \textbf{Claim Start Index} 8119\\
 \textbf{Claim End Index} 8167\\
 \textbf{Stance} PRO\\
-A full description of the data generation process can be found here \cite{toledo2016expert}
+Each of the 55 topics was annotated and claims were labeled independently by five annotators.  Some claims were thrown out because of annotator disagreement.  In the final dataset, 98.5\% of the claims had agreement on the claim boundaries and stance.  A full description of the data annotation and collection process can be found here \cite{toledo2016expert}
 
 For each article, the algorithm identifies claims and stance (Pro/Con) towards the topic. Additional fine-grained annotations such as topic target, topic sentiment towards its target, claim target, claim sentiment towards its target, and the relation between the targets are also included based on the semantic model of Bar-Haim et al 
 
 \section{Method Overview}
 We divided this research problem into two parts, claim identification and stance identification.
 \subsection{Claim Identification}
-\subsection{Stance Identification}
+\subsection{Claim Stance Classification}
+
+Stance classification focuses on the problem of determining if a claim is PRO or CON, a classification stack given by the following function:
+\begin{equation}
+Stance(c, t)=  sim(c_{sentiment}, t_{sentiment})
+\end{equation}
+
+The first hypothesis we have is the following:  Vectors representing the claim and the target were similar then the stance would be PRO and if they very different than the stance would be CON.
+
+In order to test this hypothesis we created word embeddings using Word2Vec and the $gensim$ python package trained on Wikipedia corpus that was used in dataset.  From these embeddings we created a MeanEmbeddingVector which was the mean vector of the list of vectors for the words that represent the sentence.  We trained the model using Logistic Regression and Random Forests.  Similarity between the topic vector and claim vector was measured using cosine similarity.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{stance_w2v_lr}
+    \caption{\label{font-table} Confusion Matrix for Logistic Model }
+\end{figure} 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{stance_w2v_lr}
+    \caption{\label{font-table} Confusion Matrix for Random Forest }
+\end{figure} 
+
+Below are the accuracy and loss of the model trained and reported using a stratified cross-validation with three folds.
+StratifiedKFold
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline \bf & \bf Log Loss & \bf Accuracy \\ \hline
+Logistic & 1.15 & 47.6 \\
+Random Forests & .809 & 47.5 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Considering there are only two classes, this accuracy is very bad and we aren't able to determine better than chance at the stance of a specific claim.  The code for this section is 4_stance_detection.ipynb
+
+The next hypothesis we had is that instead of containing similar words or sentence embeddings, claims and targets can be classified by using their sentiment.  The hypothesis would be as follows:  Claim that have a similar sentiment as a topic will be PRO and divergent sentiment will be CON.  This idea is summarized in the following table:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline \bf & \bf $Claim_{+}$ & \bf $Claim_{-}$ \\ \hline
+$Topic_{+}$ & PRO & CON \\
+$Topic_{-}$ & CON & PRO \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+To quickly test this hypothesis we will use a pre-trained sentiment analysis model $Vader$ so that we don't have to label our text and train the model ourselves.  We find the positive, negative and neutral sentiment for each sentence and use these to form a vector which calculate the similarity using cosine similiarty.  The confusion matrix is below:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{sentiment_lr}
+    \caption{\label{font-table} Confusion Matrix for Logistic Model }
+\end{figure} 
+
+
+Loss and accuracy are calculated similar to as before:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline \bf & \bf Log Loss & \bf Accuracy \\ \hline
+Logistic & .687 & 55.2 \\
+Random Forests & .809 & 47.5 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 \section{Results and Analysis}
 \section{Conclusion}
 
