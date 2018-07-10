@@ -25,4 +25,4 @@ Stance classification focuses on the problem of de- termining if a claim is PRO 
 ## Conclusion
 In this paper, we’ve shown that claim identifica- tion, and claim stance classification could bene- fit from a combination of many features types and optimization methods. A remaining challenge is to build models that are less dependent on train- ing data type and achieve similar results on a vari- ety of data sets including online forum discussions and newspaper articles.
 
-For further description, please check our report [here]:https://github.com/julia-zhou/Argmining/blob/master/paper/Argmining_report.pdf
+For further description, please check our report [here](https://github.com/julia-zhou/Argmining/blob/master/paper/Argmining_report.pdf)
