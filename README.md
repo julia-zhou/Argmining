@@ -1,7 +1,7 @@
 # Argmining
 This repository contains work for our Final Project of TTIC 31190: NLP. It is a collaborative project with Benjamin Rothschild(@b-nroths).
 
-The goal is to explore a method that exploits structured parsing information to detect claims without resorting to topic specific information.
+Argumentation mining aims to automatically identify structured argument data from unstructured text. One important part of argumentation mining is claim and stance identification. Most of the current approaches are engineered to address specific domains, for example a specific model might be built just to analyze claims in court documents using attributes specific to court documents and legal vocabulary. However, argumentative sentences are often characterized by common rhetorical structures, independently of the domain. The goal is to explore a method that exploits structured parsing information to detect claims without resorting to topic specific information.
 
 ## Abstract
 Claim stance classification has become an active field of research in the past years. We show that claim identification could be further improved with features includ- ing mean embedding representation of a sentence, the similarity between sentence and topic target, the location of the sen- tence, length of sentence and PageRank score of the sentence. We also achieve a better than average accuracy instance classification using sentiment analysis be- tween claim and topic. This paper also shows how the combination of many fea- tures types and optimization methods are necessary to achieve accuracy in this NLP task.
